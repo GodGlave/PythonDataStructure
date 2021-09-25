@@ -1,6 +1,5 @@
 import time
 
-
 def cal_time(func):
     def wrapper(*args, **kwargs):
         t1 = time.time()
