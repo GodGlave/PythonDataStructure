@@ -7,8 +7,8 @@ class ThreadNode:
         self.rtag = 0
 
 class BinaryThreadTree:
-    def __init__(self, data_list):
-        self.data_list = data_list
+    def __init__(self, li):
+        self.li = li
         # 创建树的头结点
         self.HeadNode = ThreadNode()
         self.HeadNode.ltag = 0
@@ -16,16 +16,16 @@ class BinaryThreadTree:
         self.HeadNode.lchild = self.HeadNode
         self.PreNode = ThreadNode()
 
-    def __CreateBinaryTree(self, root=None, pos=0):
-        if pos >= len(self.data_list) or self.data_list[pos] == '#':
+    def CreateBinaryTree(self, root=None, pos=0):
+        if pos >= len(self.li) or self.li[pos] == '#':
             # 递归结束条件
             return None
         else:
-            root = ThreadNode(self.data_list[pos])
+            root = ThreadNode(self.li[pos])
             # 递归建立左子树
-            root.lchild = self.__CreateBinaryTree(root, 2*pos+1)
+            root.lchild = self.CreateBinaryTree(root, 2*pos+1)
             # 递归建立右子树
-            root.rchild = self.__CreateBinaryTree(root, 2*pos+2)
+            root.rchild = self.CreateBinaryTree(root, 2*pos+2)
             return root
 
     def VisitBinaryTreeNode(self, RootNode):
@@ -33,7 +33,7 @@ class BinaryThreadTree:
             print(RootNode.data, end=' ')
 
     def CreateInThread(self):
-        RootNode = self.__CreateBinaryTree()
+        RootNode = self.CreateBinaryTree()
         if RootNode is None:
             self.HeadNode.lchild = self.HeadNode
         else:
