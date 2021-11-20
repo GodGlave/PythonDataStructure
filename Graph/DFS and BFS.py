@@ -16,7 +16,7 @@ def DFS(graph, s):
 def BFS(graph, s):
     queue = []  # 建立队列
     queue.append(s)
-    seen = []  # 记录已经遍历过的点
+    seen = []  # 记录已经遍历过的点  也可以使用seen=set()  seen.add(s)
     seen.append(s)
     while queue:
         vertex = queue.pop(0)  # 队列，先进先出
