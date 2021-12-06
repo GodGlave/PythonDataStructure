@@ -11,12 +11,12 @@ class Stack:
     def pop(self):
         return self.stack.pop()
 
-    def get_top(self):
+    def leek(self):
         if len(self.stack) > 0:
             return self.stack[-1]
         else:
             return None
-    def is_empty(self):
+    def isEmpty(self):
         return len(self.stack) == 0
 
 '''
@@ -34,13 +34,13 @@ def brace_match(s):
         if ch in {'(','[','{'}:
             stack.push(ch)
         else:      #ch in {'}',']',')'}
-            if stack.is_empty():
+            if stack.isEmpty():
                 return False
-            elif stack.get_top() == match[ch]:
+            elif stack.leek() == match[ch]:
                 stack.pop()
             else:   #stack.get_top() !=mach[ch]
                 return False
-    if stack.is_empty():
+    if stack.isEmpty():
         return True
     else:
         return False
